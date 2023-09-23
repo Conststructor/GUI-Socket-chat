@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34024.191
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GUI-Socket-chat", "GUI-Socket-chat\GUI-Socket-chat.vcxproj", "{EA645AE1-84F1-4C5A-B9B1-AC645B9E77D1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EA645AE1-84F1-4C5A-B9B1-AC645B9E77D1}.Debug|x64.ActiveCfg = Debug|x64
+		{EA645AE1-84F1-4C5A-B9B1-AC645B9E77D1}.Debug|x64.Build.0 = Debug|x64
+		{EA645AE1-84F1-4C5A-B9B1-AC645B9E77D1}.Debug|x86.ActiveCfg = Debug|Win32
+		{EA645AE1-84F1-4C5A-B9B1-AC645B9E77D1}.Debug|x86.Build.0 = Debug|Win32
+		{EA645AE1-84F1-4C5A-B9B1-AC645B9E77D1}.Release|x64.ActiveCfg = Release|x64
+		{EA645AE1-84F1-4C5A-B9B1-AC645B9E77D1}.Release|x64.Build.0 = Release|x64
+		{EA645AE1-84F1-4C5A-B9B1-AC645B9E77D1}.Release|x86.ActiveCfg = Release|Win32
+		{EA645AE1-84F1-4C5A-B9B1-AC645B9E77D1}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3A6C80AB-4235-4A7C-AF6F-4E33BC737003}
+	EndGlobalSection
+EndGlobal
