@@ -143,8 +143,13 @@ namespace GUISocketchat {
 #pragma endregion
 	
 private: System::Void login_button_Click(System::Object^ sender, System::EventArgs^ e) {
-	chatWindow = gcnew Chat_window();
-	chatWindow->Show();
+	String^ login = login_textBox->Text;
+	MessageBox::Show(login);
+	String^ password = password_textBox->Text;
+	MessageBox::Show(password);
+	
+	/*chatWindow = gcnew Chat_window();
+	chatWindow->Show();*/
 }
 private: System::Void register_button_Click(System::Object^ sender, System::EventArgs^ e) {
 	regWindow = gcnew Register_window();

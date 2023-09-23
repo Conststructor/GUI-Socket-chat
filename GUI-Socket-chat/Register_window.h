@@ -39,6 +39,9 @@ namespace GUISocketchat {
 	private: System::Windows::Forms::TextBox^ regPassword2_textBox;
 	private: System::Windows::Forms::Button^ regRegister_button;
 	private: System::Windows::Forms::Button^ regBack_button;
+	private: System::Windows::Forms::Label^ regLogin_label;
+	private: System::Windows::Forms::Label^ regPassword_label;
+	private: System::Windows::Forms::Label^ regPassword2_label;
 
 
 	protected:
@@ -62,6 +65,9 @@ namespace GUISocketchat {
 			this->regPassword2_textBox = (gcnew System::Windows::Forms::TextBox());
 			this->regRegister_button = (gcnew System::Windows::Forms::Button());
 			this->regBack_button = (gcnew System::Windows::Forms::Button());
+			this->regLogin_label = (gcnew System::Windows::Forms::Label());
+			this->regPassword_label = (gcnew System::Windows::Forms::Label());
+			this->regPassword2_label = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// regLogin_textBox
@@ -70,7 +76,6 @@ namespace GUISocketchat {
 			this->regLogin_textBox->Name = L"regLogin_textBox";
 			this->regLogin_textBox->Size = System::Drawing::Size(234, 22);
 			this->regLogin_textBox->TabIndex = 0;
-			this->regLogin_textBox->Text = L"Login";
 			this->regLogin_textBox->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
 			// regPassword_textBox
@@ -79,7 +84,6 @@ namespace GUISocketchat {
 			this->regPassword_textBox->Name = L"regPassword_textBox";
 			this->regPassword_textBox->Size = System::Drawing::Size(234, 22);
 			this->regPassword_textBox->TabIndex = 1;
-			this->regPassword_textBox->Text = L"Password";
 			this->regPassword_textBox->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
 			// regPassword2_textBox
@@ -88,7 +92,6 @@ namespace GUISocketchat {
 			this->regPassword2_textBox->Name = L"regPassword2_textBox";
 			this->regPassword2_textBox->Size = System::Drawing::Size(234, 22);
 			this->regPassword2_textBox->TabIndex = 2;
-			this->regPassword2_textBox->Text = L"Repeat password";
 			this->regPassword2_textBox->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
 			// 
 			// regRegister_button
@@ -99,6 +102,7 @@ namespace GUISocketchat {
 			this->regRegister_button->TabIndex = 3;
 			this->regRegister_button->Text = L"Register";
 			this->regRegister_button->UseVisualStyleBackColor = true;
+			this->regRegister_button->Click += gcnew System::EventHandler(this, &Register_window::regRegister_button_Click);
 			// 
 			// regBack_button
 			// 
@@ -110,11 +114,41 @@ namespace GUISocketchat {
 			this->regBack_button->UseVisualStyleBackColor = true;
 			this->regBack_button->Click += gcnew System::EventHandler(this, &Register_window::regBack_button_Click);
 			// 
+			// regLogin_label
+			// 
+			this->regLogin_label->AutoSize = true;
+			this->regLogin_label->Location = System::Drawing::Point(368, 66);
+			this->regLogin_label->Name = L"regLogin_label";
+			this->regLogin_label->Size = System::Drawing::Size(40, 16);
+			this->regLogin_label->TabIndex = 5;
+			this->regLogin_label->Text = L"Login";
+			// 
+			// regPassword_label
+			// 
+			this->regPassword_label->AutoSize = true;
+			this->regPassword_label->Location = System::Drawing::Point(357, 134);
+			this->regPassword_label->Name = L"regPassword_label";
+			this->regPassword_label->Size = System::Drawing::Size(67, 16);
+			this->regPassword_label->TabIndex = 6;
+			this->regPassword_label->Text = L"Password";
+			// 
+			// regPassword2_label
+			// 
+			this->regPassword2_label->AutoSize = true;
+			this->regPassword2_label->Location = System::Drawing::Point(332, 196);
+			this->regPassword2_label->Name = L"regPassword2_label";
+			this->regPassword2_label->Size = System::Drawing::Size(115, 16);
+			this->regPassword2_label->TabIndex = 7;
+			this->regPassword2_label->Text = L"Repeat Password";
+			// 
 			// Register_window
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(811, 509);
+			this->Controls->Add(this->regPassword2_label);
+			this->Controls->Add(this->regPassword_label);
+			this->Controls->Add(this->regLogin_label);
 			this->Controls->Add(this->regBack_button);
 			this->Controls->Add(this->regRegister_button);
 			this->Controls->Add(this->regPassword2_textBox);
@@ -133,6 +167,29 @@ namespace GUISocketchat {
 	
 private: System::Void regBack_button_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Close();
+}
+private: System::Void regRegister_button_Click(System::Object^ sender, System::EventArgs^ e) {
+	String^ login = regLogin_textBox->Text;
+	String^ pass1 = regPassword_textBox->Text;
+	String^ pass2 = regPassword2_textBox->Text;
+
+	if (login == "")
+	{
+		MessageBox::Show("login field are empty");
+	}
+	else
+	{
+		if (pass1 == pass2)
+		{
+			MessageBox::Show("success adding user :");
+			MessageBox::Show(login);
+		}
+		if (pass1 != pass2)
+		{
+			MessageBox::Show("passwords are not match");
+		}
+	}
+
 }
 };
 }
