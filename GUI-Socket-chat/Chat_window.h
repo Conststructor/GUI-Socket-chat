@@ -1,5 +1,8 @@
 #pragma once
 
+//#include "Chat_window.cpp"
+//#include "Login_window.cpp"
+
 namespace GUISocketchat {
 
 	using namespace System;
@@ -8,6 +11,8 @@ namespace GUISocketchat {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Text;
+	using namespace System::Net::Sockets;
 
 	/// <summary>
 	/// Сводка для Chat_window
@@ -87,6 +92,7 @@ namespace GUISocketchat {
 			this->chatSend_button->TabIndex = 2;
 			this->chatSend_button->Text = L"Send";
 			this->chatSend_button->UseVisualStyleBackColor = true;
+			this->chatSend_button->Click += gcnew System::EventHandler(this, &Chat_window::chatSend_button_Click);
 			// 
 			// chatExit_button
 			// 
@@ -138,5 +144,11 @@ namespace GUISocketchat {
 	private: System::Void chatExit_button_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Close();
 	}
+private: System::Void chatSend_button_Click(System::Object^ sender, System::EventArgs^ e) {
+	String^ inputText = chatInput_richTextBox->Text;
+	chat_richTextBox->AppendText(inputText);
+	array<Byte>^ byteMessage = Encoding::UTF8->GetBytes(inputText);
+
+}
 };
 }
