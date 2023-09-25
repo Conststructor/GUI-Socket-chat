@@ -1,6 +1,7 @@
 #pragma once
 #include "Chat_window.h"
 #include "Register_window.h"
+#include "Functions.h"
 
 namespace GUISocketchat {
 
@@ -19,6 +20,7 @@ namespace GUISocketchat {
 	public:
 		Register_window^ regWindow;
 		Chat_window^ chatWindow;
+
 		Login_window(void)
 		{
 			InitializeComponent();
@@ -145,9 +147,15 @@ namespace GUISocketchat {
 private: System::Void login_button_Click(System::Object^ sender, System::EventArgs^ e) {
 	String^ login = login_textBox->Text;
 	String^ password = password_textBox->Text;
+	//Connections^ connection = gcnew Connections();
+	//connection->connectToServer();
 	
+	connectServer();
+
 	chatWindow = gcnew Chat_window();
 	chatWindow->Show();
+
+	disconnectServer();
 }
 private: System::Void register_button_Click(System::Object^ sender, System::EventArgs^ e) {
 	regWindow = gcnew Register_window();

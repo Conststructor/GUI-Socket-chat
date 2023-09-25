@@ -131,6 +131,7 @@
     <ClInclude Include="Chat_window.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Functions.h" />
     <ClInclude Include="Login_window.h">
       <FileType>CppForm</FileType>
     </ClInclude>

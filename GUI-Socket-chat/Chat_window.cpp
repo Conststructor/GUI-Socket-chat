@@ -7,9 +7,25 @@
 using namespace System;
 //using namespace System::Windows::Forms;
 //using namespace System::Net::Sockets;
+using namespace System::Net;
 using namespace System::Text;
 
+//SOCKET clientSocket;
+//int port = 15000;
+//WSADATA wsaData;
+//int wsaerr;
+//WORD wVersionRequested = MAKEWORD(2, 2);
 
+//void sendingMessage(String^ message) {
+	//array<Byte>^ byteMessage = Encoding::UTF8->GetBytes(message);
+	//clientSocket->Send(byteMessage);
+//}
+
+//void recievingMessage() {
+	//array<Byte>^ byteBuffer= gcnew array<Byte>(1024);
+	//int bytes = clientSocket->Receive(byteBuffer);
+	//String^ recievedMessage = Encoding::UTF8->GetString(byteBuffer, 0, bytes);
+//}
 
 //char buffer[300];
 //
@@ -69,3 +85,5 @@ using namespace System::Text;
 //		}
 //	}
 //}
+
+

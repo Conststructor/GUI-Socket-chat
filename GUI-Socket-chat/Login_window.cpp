@@ -65,21 +65,50 @@ using namespace System::Text;
 //	return;
 //}
 
-void connectToServer() {
-	Socket^ clientSocket = gcnew Socket(AddressFamily::InterNetwork, SocketType::Stream, ProtocolType::Tcp);
-	int port = 15000;
-	IPAddress^ ipAddress = IPAddress::Parse("127.0.0.1");
-	clientSocket->Connect(ipAddress, port);
-
-	/*if (clientSocket->Connect(ipAddress, port) == SocketError::Success)
-	{
-		MessageBox::Show("Connection to server established");
-	}
-	else
-	{
-		MessageBox::Show("Connection failed");
-	}*/
-}
+//ref class Connections
+//{
+//public:
+//	Connections();
+//	~Connections();
+//
+//private:
+//	//static Socket cliSock;
+//	Socket^ clientSocket = gcnew Socket(AddressFamily::InterNetwork, SocketType::Stream, ProtocolType::Tcp);
+//	int port = 15000;
+//	IPAddress^ ipAddress = IPAddress::Parse("127.0.0.1");
+//
+//public:
+//	void connectToServer() {
+//		clientSocket->Connect(ipAddress, port);
+//		/*if (clientSocket->Connect(ipAddress, port) == SocketError::Success)
+//		{
+//			MessageBox::Show("Connection to server established");
+//		}
+//		else
+//		{
+//			MessageBox::Show("Connection failed");
+//		}*/
+//	}
+//
+//	void sendingMessage(String^ message) {
+//		array<Byte>^ byteMessage = Encoding::UTF8->GetBytes(message);
+//		clientSocket->Send(byteMessage);
+//	};
+//
+//	void recievingMessage() {
+//		array<Byte>^ byteBuffer = gcnew array<Byte>(1024);
+//		int bytes = clientSocket->Receive(byteBuffer);
+//		String^ recievedMessage = Encoding::UTF8->GetString(byteBuffer, 0, bytes);
+//	}
+//};
+//
+//Connections::Connections()
+//{
+//}
+//
+//Connections::~Connections()
+//{
+//}
 
 [STAThreadAttribute]
 
@@ -87,10 +116,6 @@ void connectToServer() {
 int main(array<String^>^ args) {
 	Application::SetCompatibleTextRenderingDefault(false);
 	Application::EnableVisualStyles();
-	//connectServer();
-	connectToServer();
 	GUISocketchat::Login_window form;
 	Application::Run(% form);
-	
-	//disconnectServer();
 }

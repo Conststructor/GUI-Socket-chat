@@ -1,7 +1,10 @@
 #pragma once
 
+#include "Functions.h"
+
 //#include "Chat_window.cpp"
 //#include "Login_window.cpp"
+//#include "Login_window.h"
 
 namespace GUISocketchat {
 
@@ -144,11 +147,11 @@ namespace GUISocketchat {
 	private: System::Void chatExit_button_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Close();
 	}
-private: System::Void chatSend_button_Click(System::Object^ sender, System::EventArgs^ e) {
-	String^ inputText = chatInput_richTextBox->Text;
-	chat_richTextBox->AppendText(inputText);
-	array<Byte>^ byteMessage = Encoding::UTF8->GetBytes(inputText);
-
-}
+	private: System::Void chatSend_button_Click(System::Object^ sender, System::EventArgs^ e) {
+		String^ inputText = chatInput_richTextBox->Text;
+		chat_richTextBox->AppendText(inputText);
+		array<Byte>^ byteMessage = Encoding::UTF8->GetBytes(inputText);
+		//sending();
+	}
 };
 }
