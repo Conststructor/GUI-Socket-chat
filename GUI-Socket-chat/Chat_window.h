@@ -1,6 +1,10 @@
 #pragma once
 
 #include "Functions.h"
+#include <msclr/marshal_cppstd.h>
+
+//#include <cliext\vector>
+//#include <cliext\algorithm>
 
 //#include "Chat_window.cpp"
 //#include "Login_window.cpp"
@@ -149,9 +153,21 @@ namespace GUISocketchat {
 	}
 	private: System::Void chatSend_button_Click(System::Object^ sender, System::EventArgs^ e) {
 		String^ inputText = chatInput_richTextBox->Text;
-		chat_richTextBox->AppendText(inputText);
+
+		//chat_richTextBox->AppendText(inputText);
+
 		array<Byte>^ byteMessage = Encoding::UTF8->GetBytes(inputText);
-		//sending();
+
+		std::string nativeString = msclr::interop::marshal_as<std::string>(inputText);
+		char message[300];
+		strcpy_s(message, nativeString.c_str());
+		sending(message);
+		
+		char recArr[300];
+		//recieving();
+		std::string natStr(recieving());
+		String^ recStr = gcnew String(natStr.c_str());
+		chat_richTextBox->AppendText(recStr);
 	}
 };
 }

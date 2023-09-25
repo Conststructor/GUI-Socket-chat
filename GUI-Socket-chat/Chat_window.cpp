@@ -4,11 +4,11 @@
 //#include <WS2tcpip.h>
 
 //using namespace std;
-using namespace System;
+//using namespace System;
 //using namespace System::Windows::Forms;
 //using namespace System::Net::Sockets;
-using namespace System::Net;
-using namespace System::Text;
+//using namespace System::Net;
+//using namespace System::Text;
 
 //SOCKET clientSocket;
 //int port = 15000;

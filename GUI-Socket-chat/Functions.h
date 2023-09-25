@@ -4,6 +4,6 @@ void connectServer();
 
 void disconnectServer();
 
-void sending();
+void sending(char* buffer);
 
-void recieving();
+char* recieving();

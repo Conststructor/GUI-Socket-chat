@@ -155,7 +155,7 @@ private: System::Void login_button_Click(System::Object^ sender, System::EventAr
 	chatWindow = gcnew Chat_window();
 	chatWindow->Show();
 
-	disconnectServer();
+	//disconnectServer();
 }
 private: System::Void register_button_Click(System::Object^ sender, System::EventArgs^ e) {
 	regWindow = gcnew Register_window();
