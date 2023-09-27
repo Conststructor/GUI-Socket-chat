@@ -1,5 +1,6 @@
 #include <WinSock2.h>
 #include <WS2tcpip.h>
+#include <cstring>
 #include "Functions.h"
 
 using namespace System::Windows::Forms;
@@ -9,6 +10,8 @@ int port = 15000;
 WSADATA wsaData;
 int wsaerr;
 WORD wVersionRequested = MAKEWORD(2, 2);
+
+char buffer[300];
 
 void connectServer() {
 
@@ -54,24 +57,21 @@ void connectServer() {
 		return;
 	}
 }
+
 void disconnectServer() {
 	system("pause");
 	WSACleanup();
 	return;
 }
 
-
-char buffer[300];
-
 void sending(char* buffer) {
 	int byteCount = send(clientSocket, buffer, 300, 0);
 	if (byteCount > 0 && byteCount < 300)
-	{	//cout << "Send message : " << buffer << endl;
+	{
 		MessageBox::Show("Message send !");
 	}
 	if (byteCount > 300)
 	{
-		//cout << "Failed to send message : " << WSAGetLastError() << endl;
 		MessageBox::Show("Failed to send message !");
 		WSACleanup();
 	}
@@ -89,12 +89,10 @@ char* recieving() {
 		}
 		if (byteCount > 0 && byteCount < 300)
 		{
-			//cout << "Server : " << buffer << endl;
 			return buffer;
 		}
 		if (byteCount > 300)
 		{
-			//cout << "Failed to recive message : " << WSAGetLastError() << endl;
 			WSACleanup();
 			return buffer;
 			break;
@@ -102,4 +100,49 @@ char* recieving() {
 		return buffer;
 	}
 	return buffer;
+}
+
+void loginToServer(char* login, char* password) {
+	char loginMessage[300];
+	strcpy(loginMessage, login);
+	strcpy(loginMessage, password);
+	int byteCount = send(clientSocket, loginMessage, 300, 0);
+
+	if (int byteCount = recv(clientSocket, buffer, 300, 0) & buffer=="login granted")
+	{
+		MessageBox::Show("You successfuly login");
+	}
+	else
+	{
+		MessageBox::Show("login denied");
+		WSACleanup();
+	}
+}
+
+void registerNewUser(char* login, char* password1, char* password2) {
+	char registerMessage[300];
+	strcpy(registerMessage, login);
+	strcpy(registerMessage, password1);
+	strcpy(registerMessage, password2);
+
+	if (password1!=password2)
+	{
+		MessageBox::Show("Passwords are not match !");
+		return;
+	}
+	else
+	{
+		int byteCount = send(clientSocket, registerMessage, 300, 0);
+		if (int byteCount = recv(clientSocket, buffer, 300, 0) & buffer == "Login granted")
+		{
+			MessageBox::Show("You successfuly registred");
+			return;
+		}
+		if (buffer == "Login in use")
+		{
+			MessageBox::Show("Login already used");
+			WSACleanup();
+			return;
+		}
+	}
 }

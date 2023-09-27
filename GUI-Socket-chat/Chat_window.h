@@ -33,6 +33,7 @@ namespace GUISocketchat {
 			//
 			//TODO: добавьте код конструктора
 			//
+			//recieving();
 		}
 
 	protected:
@@ -153,21 +154,16 @@ namespace GUISocketchat {
 	}
 	private: System::Void chatSend_button_Click(System::Object^ sender, System::EventArgs^ e) {
 		String^ inputText = chatInput_richTextBox->Text;
-
-		//chat_richTextBox->AppendText(inputText);
-
 		array<Byte>^ byteMessage = Encoding::UTF8->GetBytes(inputText);
-
 		std::string nativeString = msclr::interop::marshal_as<std::string>(inputText);
 		char message[300];
 		strcpy_s(message, nativeString.c_str());
 		sending(message);
-		
-		char recArr[300];
-		//recieving();
+		chatInput_richTextBox->Clear();
+
 		std::string natStr(recieving());
 		String^ recStr = gcnew String(natStr.c_str());
-		chat_richTextBox->AppendText(recStr);
+		chat_richTextBox->AppendText(recStr + Environment::NewLine);
 	}
 };
 }

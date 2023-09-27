@@ -189,7 +189,6 @@ private: System::Void regRegister_button_Click(System::Object^ sender, System::E
 			MessageBox::Show("passwords are not match");
 		}
 	}
-
 }
 };
 }

@@ -54,7 +54,7 @@ namespace GUISocketchat {
 		/// <summary>
 		/// Обязательная переменная конструктора.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -143,23 +143,17 @@ namespace GUISocketchat {
 
 		}
 #pragma endregion
-	
-private: System::Void login_button_Click(System::Object^ sender, System::EventArgs^ e) {
-	String^ login = login_textBox->Text;
-	String^ password = password_textBox->Text;
-	//Connections^ connection = gcnew Connections();
-	//connection->connectToServer();
-	
-	connectServer();
 
-	chatWindow = gcnew Chat_window();
-	chatWindow->Show();
-
-	//disconnectServer();
-}
-private: System::Void register_button_Click(System::Object^ sender, System::EventArgs^ e) {
-	regWindow = gcnew Register_window();
-	regWindow->Show();
-}
-};
+	private: System::Void login_button_Click(System::Object^ sender, System::EventArgs^ e) {
+		String^ login = login_textBox->Text;
+		String^ password = password_textBox->Text;
+		connectServer();
+		chatWindow = gcnew Chat_window();
+		chatWindow->Show();
+	}
+	private: System::Void register_button_Click(System::Object^ sender, System::EventArgs^ e) {
+		regWindow = gcnew Register_window();
+		regWindow->Show();
+	}
+	};
 }
